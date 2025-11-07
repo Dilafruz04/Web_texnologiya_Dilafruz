@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Urganch shahar</title>
+    <style>
+        body {
+            background-color: #f0f8ff;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+        }
+
+        header {
+            background-color: #0077cc;
+            color: white;
+            padding: 40px 0 20px;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 48px;
+        }
+
+        .welcome-text {
+            font-size: 20px;
+            color: #e0e0e0;
+            margin-top: 10px;
+        }
+
+        nav {
+            background-color: #005fa3;
+            padding: 10px 0;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 20px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        /* === Jadval dizayni === */
+        table {
+            width: 90%;
+            margin: 40px auto;
+            border-collapse: collapse;
+            background-color: #ffffff;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        th, td {
+            border: 1px solid #0077cc;
+            padding: 12px;
+            text-align: center;
+            vertical-align: middle;
+        }
+
+        th {
+            background-color: #0077cc;
+            color: white;
+            font-size: 18px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        tr:hover {
+            background-color: #d9f0ff;
+        }
+
+        caption {
+            caption-side: top;
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #005fa3;
+        }
+
+        /* Rasm o'lchami */
+        .table-img {
+            width: 80px;
+            height: 60px;
+            object-fit: cover;
+            border-radius: 6px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        /* Havola uslubi */
+        .view-link {
+            color: #0077cc;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .view-link:hover {
+            text-decoration: underline;
+            color: #005fa3;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Urganch shahar</h1>
+        <p class="welcome-text">Xush kelibsiz! Urganch — qadimiy tarix va zamonaviy taraqqiyot uyg‘unlashgan shahar</p>
+    </header>
+
+    <nav>
+        <a href="index.html">Bosh sahifa</a>
+        <a href="tarix.html">Tarix</a>
+        <a href="galereya.html">Rasm galereyasi</a>
+    </nav>
+
+
+<!-- === Jadval bo‘limi === -->
+    <table>
+        <caption>Urganch shahri haqida asosiy ma’lumotlar</caption>
+        <thead>
+            <tr>
+                <th>T/r</th>
+                <th>Ko‘rsatkich</th>
+                <th>Qiymat</th>
+                <th>Rasm</th>
+                <th>Havola</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>Aholisi (2024 yil holatiga)</td>
+                <td>152 000 kishi</td>
+                <td><img src="img/photo_2025-11-07_12-50-00.jpg" alt="Urganch" class="table-img"></td>
+                <td><a href="https://www.xorazmstat.uz/uz/matbuot-markazi/boshqarma-yangiliklar/15688-urganch-shahrining-doimiy-aholisi-soni-qanchaga-oshgan" target="_blank" class="view-link">Ko‘rish</a></td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Maydoni</td>
+                <td>39 km²</td>
+                <td><img src="IMG/photo_2025-11-07_12-53-06.jpg" alt="Urganch" class="table-img"></td>
+                <td><a href="https://kun.uz/69482885" target="_blank" class="view-link">Ko‘rish</a></td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>Hududiy markazi</td>
+                <td>Xorazm viloyati</td>
+                <td><img src="img/photo_2025-11-07_12-55-04.jpg" alt="Urganch" class="table-img"></td>
+                <td><a href="https://uz.wikipedia.org/wiki/Ko%CA%BBhna_Urganch" target="_blank" class="view-link">Ko‘rish</a></td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>Asos solingan yili</td>
+                <td>X asr</td>
+                <td><img src="img/photo_2025-11-07_12-57-05.jpg" alt="Urganch" class="table-img"></td>
+                <td><a href="https://qomus.info/oz/encyclopedia/u/urganch/" target="_blank" class="view-link">Ko‘rish</a></td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td>Asosiy daryo</td>
+                <td>Amudaryo</td>
+                <td><img src="img/photo_2025-11-07_12-58-32.jpg" alt="Urganch" class="table-img"></td>
+                <td><a href="https://uz.wikipedia.org/wiki/Amudaryo" target="_blank" class="view-link">Ko‘rish</a></td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <th colspan="4">Manba:</th>
+                <td>Urganch shahar hokimligi ma’lumotlari</td>
+            </tr>
+        </tfoot>
+    </table>
+</body>
+</html>
