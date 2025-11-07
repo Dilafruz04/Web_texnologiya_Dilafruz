@@ -1,0 +1,112 @@
+/* Umumiy sozlamalar */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: url('img/photo_2025-11-07_13-39-42.jpg') center/cover no-repeat fixed;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    position: relative;
+}
+
+/* Forma konteyneri */
+#register {
+    width: 100%;
+    max-width: 400px;
+}
+
+#register h2 {
+    color: white;
+    margin-bottom: 20px;
+    font-size: 28px;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+/* Forma */
+form {
+    background: white;
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    text-align: left;
+}
+
+/* Label */
+label {
+    display: block;
+    margin-bottom: 6px;
+    color: #2c3e50;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+/* Input, Select, Textarea */
+input[type="text"],
+input[type="email"],
+select,
+textarea {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 16px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+/* Fokus holati */
+input:focus,
+select:focus,
+textarea:focus {
+    outline: none;
+    border-color: #4e97e0;
+    box-shadow: 0 0 0 3px rgba(78, 151, 224, 0.2);
+}
+
+/* Select o'qini o'zgartirish */
+select {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%23666' d='M0 0l6 8 6-8z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 12px;
+}
+
+/* Textarea */
+textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+/* Tugma */
+button {
+    width: 100%;
+    padding: 14px;
+    background: linear-gradient(to right, #4e97e0, #357abd);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 10px;
+}
+
+/* Hover effekti */
+button:hover {
+    background: linear-gradient(to right, #357abd, #2c6aa0);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(78, 151, 224, 0.4);
+}
+
+button:active {
+    transform: translateY(0);
+}
