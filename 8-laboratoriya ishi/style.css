@@ -1,0 +1,93 @@
+/* Umumiy reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  padding: 20px;
+}
+
+/* Gridni ishlatib, kartochkalar uchun layout */
+.container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Har bir kartochka uchun minimal kenglik */
+  gap: 20px;
+  justify-items: center;
+}
+
+/* Har bir kitob kartochkasi */
+.book-card {
+  background-color: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 300px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.book-card:hover {
+  transform: scale(1.05);
+}
+
+/* Kitobning muqova rasmi */
+.book-image {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Kitob haqida ma'lumot */
+.book-info {
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 250px;
+}
+
+/* Sarlavha */
+.book-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+/* Muallif nomi */
+.book-author {
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 10px;
+}
+
+/* Kitob tavsifi */
+.book-description {
+  font-size: 0.9rem;
+  color: #777;
+  margin-bottom: 15px;
+  flex-grow: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Tugma */
+.read-btn {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s;
+}
+
+.read-btn:hover {
+  background-color: #45a049;
+}
