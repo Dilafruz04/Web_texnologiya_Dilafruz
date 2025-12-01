@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Urganch shahar</title>
+<style>
+body {
+    background-color: #f0f8ff;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin: 0;
+}
+
+header {
+    background-color: #0077cc;
+    color: white;
+    padding: 40px 0 20px;
+}
+
+h1 {
+    margin: 0;
+    font-size: 48px;
+}
+
+.welcome-text {
+    font-size: 20px;
+    color: #e0e0e0;
+    margin-top: 10px;
+}
+
+nav {
+    background-color: #005fa3;
+    padding: 10px 0;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 20px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+
+.table-container {
+    margin: 30px auto;
+    width: 90%;
+    max-width: 1000px;
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+th, td {
+    border: 1px solid #ccc;
+    padding: 12px;
+    text-align: left;
+}
+
+th {
+    background-color: #0077cc;
+    color: white;
+    font-size: 18px;
+}
+
+td {
+    font-size: 16px;
+}
+
+
+@media (max-width: 767px) {
+    table, thead, tbody, th, td, tr {
+        display: block;
+    }
+
+    thead {
+        display: none; 
+    }
+
+    tr {
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        padding: 10px;
+        background: white;
+    }
+
+    td {
+        text-align: left;
+        padding: 10px;
+        border: none;
+        border-bottom: 1px solid #ddd;
+        position: relative;
+    }
+
+    td:last-child {
+        border-bottom: none;
+    }
+
+    td::before {
+        content: attr(data-label);
+        font-weight: bold;
+        color: #0077cc;
+        display: block;
+        margin-bottom: 5px;
+    }
+}
+</style>
+</head>
+<body>
+<header>
+    <h1>Urganch shahar</h1>
+    <p class="welcome-text"> Xush kelibsiz! Urganch — qadimiy tarix va zamonaviy taraqqiyot uyg‘unlashgan shahar</p>
+</header>
+
+<nav>
+    <a href="index.html">Bosh sahifa</a>
+    <a href="tarix.html">Tarix</a>
+    <a href="galereya.html">Rasm galereyasi</a>
+</nav>
+
+<div class="table-container">
+    <table>
+        <thead>
+            <tr>
+                <th>Obyekt nomi</th>
+                <th>Turi</th>
+                <th>Manzili</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td data-label="Obyekt nomi">Xorazm Ma'mun Akademiyasi</td>
+                <td data-label="Turi">Tarixiy ilmiy maskan</td>
+                <td data-label="Manzili">Al-Xorazmiy ko‘chasi</td>
+            </tr>
+            <tr>
+                <td data-label="Obyekt nomi">Urganch Davlat Universiteti</td>
+                <td data-label="Turi">Oliy ta’lim muassasasi</td>
+                <td data-label="Manzili">O‘zbekiston ko‘chasi</td>
+            </tr>
+            <tr>
+                <td data-label="Obyekt nomi">Ichan-Qal’a (Xiva yaqinida)</td>
+                <td data-label="Turi">Tarixiy meros</td>
+                <td data-label="Manzili">Xiva shahri</td>
+            </tr>
+            <tr>
+                <td data-label="Obyekt nomi">Al-Xorazmiy haykali</td>
+                <td data-label="Turi">Yodgorlik</td>
+                <td data-label="Manzili">Markaziy xiyobon</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>
