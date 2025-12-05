@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Urganch shahar</title>
+    <style>
+        body {
+            background-color: #f0f8ff;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+        }
+
+        header {
+            background-color: #0077cc;
+            color: white;
+            padding: 40px 0 20px;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 48px;
+        }
+
+        .welcome-text {
+            font-size: 20px;
+            color: #e0e0e0;
+            margin-top: 10px;
+        }
+
+        nav {
+            background-color: #005fa3;
+            padding: 10px 0;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 20px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        table {
+            margin: 20px auto;
+            border-collapse: collapse;
+            width: 80%;
+        }
+
+        table th, table td {
+            border: 1px solid #ccc;
+            padding: 10px;
+        }
+
+        input, button {
+            padding: 8px 12px;
+            font-size: 16px;
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Urganch shahar</h1>
+        <p class="welcome-text"> Xush kelibsiz! Urganch — qadimiy tarix va zamonaviy taraqqiyot uyg‘unlashgan shahar</p>
+    </header>
+
+    <nav>
+        <a href="index.html">Bosh sahifa</a>
+        <a href="tarix.html">Tarix</a>
+        <a href="galereya.html">Rasm galereyasi</a>
+    </nav>
+
+    <div class="content">
+        <h2>Shahar haqida interaktiv jadval</h2>
+        <input type="text" id="inputAholi" placeholder="Yangi aholi sonini kiriting"/>
+        <button onclick="yangilaAholi()">Yangilash</button>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Shahar nomi</th>
+                    <th>Aholisi</th>
+                    <th>Asosiy ma’lumot</th>
+                </tr>
+            </thead>
+            <tbody id="shaharJadval">
+                <!-- Jadval ma’lumotlari shu yerga chiqariladi -->
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        // O'zgaruvchilar
+        const shaharNomi = "Urganch";
+        let aholisi = 170000;
+        const asosiyMalumot = "Qadimiy tarix va zamonaviy taraqqiyot uyg‘unlashgan shahar.";
+
+        // Funksiya: jadvalni yaratish
+        function jadvalniChopEt() {
+            const tbody = document.getElementById("shaharJadval");
+            tbody.innerHTML = `
+                <tr>
+                    <td>${shaharNomi}</td>
+                    <td>${aholisi}</td>
+                    <td>${asosiyMalumot}</td>
+                </tr>
+            `;
+        }
+
+        // Funksiya: input orqali aholini yangilash
+        function yangilaAholi() {
+            let yangiAholi = document.getElementById("inputAholi").value;
+            if (yangiAholi && !isNaN(yangiAholi)) {
+                aholisi = parseInt(yangiAholi);
+                jadvalniChopEt();
+                alert(`Aholi yangilandi: ${aholisi}`);
+            } else {
+                alert("Iltimos, to‘g‘ri raqam kiriting!");
+            }
+        }
+
+        // Sahifa yuklanganida jadvalni chiqarish
+        jadvalniChopEt();
+    </script>
+</body>
+</html>
+
