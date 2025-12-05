@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Urganch shahar</title>
+
+    <!-- Ikonkalar uchun -->
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+    <style>
+        body {
+            background-color: #f0f8ff;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+        }
+
+        header {
+            background-color: #0077cc;
+            color: white;
+            padding: 40px 0 20px;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 48px;
+        }
+
+        .welcome-text {
+            font-size: 20px;
+            color: #e0e0e0;
+            margin-top: 10px;
+        }
+
+        nav {
+            background-color: #005fa3;
+            padding: 10px 0;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 20px;
+            font-size: 20px;
+            font-weight: bold;
+            transition: 0.3s ease;
+        }
+
+        nav a:hover {
+            color: #ffdd00;
+            transform: scale(1.15);
+        }
+
+        /* Tugma */
+        .city-btn {
+            display: inline-block;
+            margin-top: 40px;
+            padding: 15px 30px;
+            font-size: 20px;
+            background: #0077cc;
+            color: white;
+            border-radius: 8px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: 0.4s;
+        }
+
+        .city-btn:hover {
+            background: #005fa3;
+            transform: scale(1.2);
+        }
+
+        /* Rasm */
+        .city-img {
+            margin-top: 40px;
+            width: 260px;
+            border-radius: 12px;
+            transition: 0.5s ease;
+        }
+
+        .city-img:hover {
+            transform: scale(1.1) rotate(3deg);
+            box-shadow: 0 12px 25px rgba(0,0,0,0.3);
+        }
+
+        /* Ikon animatsiyasi */
+        .icons {
+            margin-top: 30px;
+        }
+
+        .icons i {
+            font-size: 40px;
+            margin: 0 15px;
+            color: #ff0066;
+            animation: bounce 2s infinite;
+            transition: 0.4s;
+        }
+
+        .icons i:hover {
+            color: gold;
+            transform: scale(1.25);
+        }
+
+        /* Yashirin ma'lumot qutisi */
+        .info-box {
+            width: 70%;
+            margin: 40px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.2);
+            opacity: 0;
+            transform: translateY(20px);
+            pointer-events: none;
+            transition: 0.6s ease;
+        }
+
+        /* Tugma bosilganda ochiladigan qism */
+        #more-info:target {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: auto;
+        }
+
+        /* Animatsiyalar */
+        @keyframes bounce {
+            0%   { transform: translateY(0); }
+            50%  { transform: translateY(-15px); }
+            100% { transform: translateY(0); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>Urganch shahar</h1>
+        <p class="welcome-text">
+            Xush kelibsiz! Urganch — qadimiy tarix va zamonaviy taraqqiyot uyg‘unlashgan shahar
+        </p>
+    </header>
+
+    <nav>
+        <a href="index.html">Bosh sahifa</a>
+        <a href="tarix.html">Tarix</a>
+        <a href="galereya.html">Rasm galereyasi</a>
+    </nav>
+
+    <!-- Tugma bosilganda pastdagi blok ochiladi -->
+    <a class="city-btn" href="#more-info">Urganch haqida ko‘proq</a>
+
+    <!-- Rasm -->
+    <img class="city-img" src="img/photo_2025-12-05_15-58-15.jpg" alt="Urganch rasmi">
+
+    <!-- Ikonlar -->
+    <div class="icons">
+        <i class="fas fa-map-marker-alt"></i>
+        <i class="fas fa-star"></i>
+        <i class="fas fa-heart"></i>
+    </div>
+
+    <!-- Tugma bosilganda chiqadigan bo‘lim -->
+    <div id="more-info" class="info-box">
+        <h2>Urganch haqida</h2>
+        <p>
+            Urganch — Xorazm viloyatining ma’muriy markazi, O‘zbekistonning qadimiy va zamonaviy shaharlaridan biridir.
+            Bu yerda tarixiy obidalar, yangi qurilayotgan zamonaviy binolar va mehmondo‘st xalqni uchratish mumkin.
+        </p>
+    </div>
+
+</body>
+</html>
