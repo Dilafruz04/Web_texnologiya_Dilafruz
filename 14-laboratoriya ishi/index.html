@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Urganch shahar</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <style>
+        body {
+            background-color: #f0f8ff;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+        }
+
+        header {
+            background-color: #0077cc;
+            color: white;
+            padding: 40px 0 20px;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 48px;
+        }
+
+        .welcome-text {
+            font-size: 20px;
+            color: #e0e0e0;
+            margin-top: 10px;
+        }
+
+        nav {
+            background-color: #005fa3;
+            padding: 10px 0;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 20px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        /* Jadval va form dizayni */
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 90%;
+            margin: 20px auto;
+        }
+        td, th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+        tr:nth-child(even) {
+            background-color: #e6f2ff;
+        }
+
+        input, button {
+            padding: 5px;
+            margin: 5px;
+            font-size: 16px;
+        }
+
+        #formError, #searchError {
+            color: red;
+            font-weight: bold;
+        }
+
+        form {
+            margin: 20px auto;
+            text-align: left;
+            width: 90%;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Urganch shahar</h1>
+        <p class="welcome-text">Xush kelibsiz! Urganch — qadimiy tarix va zamonaviy taraqqiyot uyg‘unlashgan shahar</p>
+    </header>
+
+    <nav>
+        <a href="index.html">Bosh sahifa</a>
+        <a href="tarix.html">Tarix</a>
+        <a href="galereya.html">Rasm galereyasi</a>
+    </nav>
+
+    <!-- Qidiruv maydoni -->
+    <h2>Urganch shahar joylarini qidirish</h2>
+    <input id="searchInput" type="text" placeholder="Joy nomi, tur yoki manzil bo‘yicha qidirish...">
+    <div id="searchError"></div>
+
+    <!-- Jadval -->
+    <table>
+        <thead>
+            <tr>
+                <th>Joy nomi</th>
+                <th>Tur</th>
+                <th>Manzil</th>
+            </tr>
+        </thead>
+        <tbody id="placeTable"></tbody>
+    </table>
+
+    <!-- Form yangi joy qo‘shish -->
+    <h3>Yangi joy qo‘shish</h3>
+    <form id="addPlaceForm">
+        <input type="text" id="placeName" placeholder="Joy nomi">
+        <input type="text" id="placeType" placeholder="Tur">
+        <input type="text" id="placeAddress" placeholder="Manzil">
+        <button type="submit">Qo‘shish</button>
+    </form>
+    <div id="formError"></div>
+
+    <script>
+        $(document).ready(function() {
+
+            // Boshlang‘ich joylar ro‘yxati
+            let places = [
+                {name: "Shaykhontohur bog‘i", type: "Turistik joy", address: "Markaziy ko‘cha 12"},
+                {name: "Urganch muzeyi", type: "Tarixiy joy", address: "Ko‘cha 5"},
+                {name: "Amir Temur xiyoboni", type: "Dam olish", address: "Shahar markazi"},
+                {name: "Shohruh park", type: "Dam olish", address: "Shohruh ko‘chasi 3"},
+                {name: "Qo‘shko‘prik bozor", type: "Savdo", address: "Bozor ko‘chasi 7"},
+                {name: "Xiva ko‘chasi", type: "Tarixiy joy", address: "Xiva ko‘chasi 1"},
+                {name: "Shovot bog‘i", type: "Dam olish", address: "Shovot ko‘chasi 4"},
+                {name: "Urganch stadioni", type: "Sport", address: "Stadion ko‘chasi 2"},
+                {name: "Yangibozor", type: "Savdo", address: "Yangibozor ko‘chasi 8"},
+                {name: "Madaniyat markazi", type: "Madaniyat", address: "Markaz ko‘chasi 6"},
+                {name: "O‘zbekiston bog‘i", type: "Turistik joy", address: "Markaz ko‘chasi 9"},
+                {name: "Urganch teatr", type: "Madaniyat", address: "Teatr ko‘chasi 3"},
+                {name: "Shohrux sport kompleksi", type: "Sport", address: "Sport ko‘chasi 1"},
+                {name: "Shahriston bog‘i", type: "Dam olish", address: "Shahriston ko‘chasi 2"}
+            ];
+
+            // Jadvalni render qilish funksiyasi
+            function renderTable(data) {
+                let tr = "";
+                $.each(data, function(i, v){
+                    tr += `<tr>
+                        <td>${v.name}</td>
+                        <td>${v.type}</td>
+                        <td>${v.address}</td>
+                    </tr>`;
+                });
+                $("#placeTable").html(tr);
+            }
+
+            // Boshlang‘ich jadvalni chiqarish
+            renderTable(places);
+
+            // Form validation va yangi joy qo‘shish
+            $("#addPlaceForm").submit(function(e){
+                e.preventDefault();
+                let name = $("#placeName").val().trim();
+                let type = $("#placeType").val().trim();
+                let address = $("#placeAddress").val().trim();
+
+                if(name.length < 3){
+                    $("#formError").text("Joy nomi kamida 3 ta belgidan iborat bo‘lishi kerak!");
+                    return;
+                }
+                if(type.length < 3){
+                    $("#formError").text("Tur maydoni kamida 3 ta belgidan iborat bo‘lishi kerak!");
+                    return;
+                }
+                if(address.length < 5){
+                    $("#formError").text("Manzil maydoni kamida 5 ta belgidan iborat bo‘lishi kerak!");
+                    return;
+                }
+
+                $("#formError").text("");
+                places.push({name: name, type: type, address: address});
+                renderTable(places);
+                $("#addPlaceForm")[0].reset();
+            });
+
+            // Qidiruv va filter
+            $("#searchInput").on("input", function(){
+                let value = $(this).val().toLowerCase().trim();
+                if(value.length < 2){
+                    $("#searchError").text("Iltimos, kamida 2 belgidan kiriting!");
+                } else {
+                    $("#searchError").text("");
+                }
+
+                let filtered = places.filter(p => 
+                    p.name.toLowerCase().includes(value) || 
+                    p.type.toLowerCase().includes(value) || 
+                    p.address.toLowerCase().includes(value)
+                );
+                renderTable(filtered);
+            });
+
+        });
+    </script>
+</body>
+</html>
