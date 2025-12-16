@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Urganch shahar - Eventlar</title>
+    <style>
+        body {
+            background-color: #eef6fb;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            text-align: center;
+        }
+
+        header {
+            background: linear-gradient(90deg, #0077cc, #005fa3);
+            color: #fff;
+            padding: 50px 0 20px;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 50px;
+        }
+
+        .welcome-text {
+            font-size: 18px;
+            color: #d0e4f5;
+            margin-top: 8px;
+        }
+
+        nav {
+            background-color: #004f8c;
+            padding: 12px 0;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 18px;
+            font-weight: 600;
+            padding: 5px 10px;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+
+        nav a:hover {
+            background-color: #0077cc;
+        }
+
+        /* Eventlar bo'limi */
+        .event-section {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin: 30px 10px;
+            gap: 20px;
+        }
+
+        .card {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            padding: 20px;
+            width: 300px;
+            transition: transform 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card h2 {
+            color: #0077cc;
+        }
+
+        button, input, select {
+            padding: 8px 12px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            margin-top: 10px;
+        }
+
+        .output {
+            margin-top: 12px;
+            font-weight: bold;
+            color: #0077cc;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Urganch shahar</h1>
+        <p class="welcome-text">Xush kelibsiz! Urganch — tarix va zamonaviylik uyg‘unlashgan shahar</p>
+    </header>
+
+    <nav>
+        <a href="index.html">Bosh sahifa</a>
+        <a href="tarix.html">Tarix</a>
+        <a href="galereya.html">Rasm galereyasi</a>
+    </nav>
+
+    <div class="event-section">
+        <!-- Click Event Card -->
+        <div class="card">
+            <h2>Click Event</h2>
+            <button id="clickBtn">Bosish</button>
+            <div id="clickOutput" class="output"></div>
+        </div>
+
+        <!-- Submit Event Card -->
+        <div class="card">
+            <h2>Submit Event</h2>
+            <form id="myForm">
+                <input type="text" id="name" placeholder="Ismingizni kiriting"><br>
+                <input type="submit" value="Yuborish">
+            </form>
+            <div id="formOutput" class="output"></div>
+        </div>
+
+        <!-- Change Event Card -->
+        <div class="card">
+            <h2>Change Event</h2>
+            <select id="colorSelect">
+                <option value="">--Rangni tanlang--</option>
+                <option value="Qizil">Qizil</option>
+                <option value="Yashil">Yashil</option>
+                <option value="Ko‘k">Ko‘k</option>
+                <option value="Sariq">Sariq</option>
+            </select>
+            <div id="changeOutput" class="output"></div>
+        </div>
+    </div>
+
+    <script>
+        // Click Event
+        document.getElementById("clickBtn").addEventListener("click", function() {
+            document.getElementById("clickOutput").innerText = "Siz tugmani bosdingiz!";
+        });
+
+        // Submit Event
+        document.getElementById("myForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            let name = document.getElementById("name").value;
+            if(name.trim() === "") {
+                document.getElementById("formOutput").innerText = "Iltimos, ismingizni kiriting!";
+            } else {
+                document.getElementById("formOutput").innerText = "Salom, " + name + "!";
+            }
+        });
+
+        // Change Event
+        document.getElementById("colorSelect").addEventListener("change", function() {
+            let selectedColor = this.value;
+            document.getElementById("changeOutput").innerText = selectedColor ? 
+                "Sizning sevimli rangingiz: " + selectedColor : "";
+        });
+
+        // Nav click event
+        document.querySelectorAll("nav a").forEach(function(link){
+            link.addEventListener("click", function(event){
+                event.preventDefault();
+                alert("Siz '" + this.innerText + "' bo'limini tanladingiz!");
+            });
+        });
+    </script>
+</body>
+</html>
