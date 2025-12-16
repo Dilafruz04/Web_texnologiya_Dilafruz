@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Urganch shahar</title>
+    <style>
+        body {
+            background-color: #f0f8ff; /* Asl fon rangi */
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+        }
+
+        header {
+            background-color: #0077cc;
+            color: white;
+            padding: 40px 0 20px;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 48px;
+        }
+
+        nav {
+            background-color: #005fa3;
+            padding: 10px 0;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 20px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        
+        #colorBlock {
+            margin: 30px auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            width: fit-content;
+        }
+
+        #colorBlock input, #colorBlock button {
+            margin: 5px;
+            padding: 5px 10px;
+        }
+    </style>
+</head>
+<body id="bg">
+
+    <header>
+        <h1>Urganch shahar</h1>
+        <p class="welcome-text">
+            Xush kelibsiz! Urganch — qadimiy tarix va zamonaviy taraqqiyot uyg‘unlashgan shahar
+        </p>
+    </header>
+
+    <nav>
+        <a href="index.html">Bosh sahifa</a>
+        <a href="tarix.html">Tarix</a>
+        <a href="galereya.html">Rasm galereyasi</a>
+    </nav>
+
+    
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+
+            
+            const defaultColor = "#f0f8ff";
+
+           
+            const colorBlock = document.createElement("div");
+            colorBlock.id = "colorBlock";
+            colorBlock.innerHTML = `
+                <h2>Urganch shahar nomli saytda JavaScript HTML DOM</h2>
+                <p>Orqa fon rangini o'zgartirish va saqlash:</p>
+                <label for="color">Orqa fon rangi:</label>
+                <input type="color" id="color" value="${defaultColor}">
+                <br><br>
+                <button id="btnChange">Rangni o'zgartir</button>
+                <button id="btnClear">Tozalash</button>
+            `;
+            document.body.appendChild(colorBlock);
+
+            
+            document.getElementById("btnChange").addEventListener("click", function() {
+                const color = document.getElementById("color").value;
+                document.getElementById("bg").style.backgroundColor = color;
+            });
+
+           
+            document.getElementById("btnClear").addEventListener("click", function() {
+                document.getElementById("bg").style.backgroundColor = defaultColor;
+                document.getElementById("color").value = defaultColor;
+            });
+
+        });
+    </script>
+   
+
+</body>
+</html>
