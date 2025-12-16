@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Urganch shahari – JSON misol</title>
+    <style>
+        body {
+            background-color: #f0f8ff;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+        }
+
+        header {
+            background-color: #0077cc;
+            color: white;
+            padding: 30px 0 10px;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 36px;
+        }
+
+        .welcome-text {
+            font-size: 18px;
+            color: #e0e0e0;
+            margin-top: 5px;
+        }
+
+        nav {
+            background-color: #005fa3;
+            padding: 10px 0;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        table {
+            margin: 20px auto;
+            border-collapse: collapse;
+            width: 95%;
+        }
+
+        th, td {
+            border: 1px solid #dddddd;
+            padding: 10px;
+            text-align: left;
+        }
+
+        tr:nth-child(even) {
+            background-color: #e6f2ff;
+        }
+
+        input {
+            padding: 8px;
+            width: 50%;
+            margin: 15px 0;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Urganch shahari</h1>
+        <p class="welcome-text">Xush kelibsiz! JSON orqali ma’lumot olish va filtrlash misoli</p>
+    </header>
+
+    <nav>
+        <a href="index.html">Bosh sahifa</a>
+        <a href="tarix.html">Tarix</a>
+        <a href="galereya.html">Rasm galereyasi</a>
+    </nav>
+
+    <h2>Shahar aholisi jadvali (JSONdan olingan)</h2>
+    <input id="searchInput" type="text" placeholder="Ism, Familiya yoki Email bo‘yicha qidirish...">
+
+    <table>
+        <thead>
+            <tr>
+                <th>Ism</th>
+                <th>Familiya</th>
+                <th>Email</th>
+            </tr>
+        </thead>
+        <tbody id="myTable">
+            <!-- JSON ma’lumot bu yerga qo‘shiladi -->
+        </tbody>
+    </table>
+
+    <script>
+        // 60 ta shahar aholisi JSON ma'lumotlari
+        const users = [
+            {"ism":"DIlafruz","familiya":"Ibodullayeva","email":"ibodullayeva@gmail.com"},
+            {"ism":"Dilnoza","familiya":"Yodgorova","email":"dilnoza.yodgorova@example.com"},
+            {"ism":"Nilufar","familiya":"Karimova","email":"nilufar.karimova@example.com"},
+            {"ism":"Sardor","familiya":"Axmedov","email":"sardor.axmedov@example.com"},
+            {"ism":"Aziza","familiya":"Toshpulatova","email":"aziza.toshpulatova@example.com"},
+            {"ism":"Bekzod","familiya":"Islomov","email":"bekzod.islomov@example.com"},
+            {"ism":"Shahlo","familiya":"Rustamova","email":"shahlo.rustamova@example.com"},
+            {"ism":"Jasur","familiya":"Yoqubov","email":"jasur.yoqubov@example.com"},
+            {"ism":"Gulnora","familiya":"Abdullayeva","email":"gulnora.abdullayeva@example.com"},
+            {"ism":"Anvar","familiya":"Rahimov","email":"anvar.rahimov@example.com"},
+            {"ism":"Diyor","familiya":"Xolmatov","email":"diyor.xolmatov@example.com"},
+            {"ism":"Malika","familiya":"Saidova","email":"malika.saidova@example.com"},
+            {"ism":"Sardor","familiya":"Eshonov","email":"sardor.eshonov@example.com"},
+            {"ism":"Zebo","familiya":"Nasriddinova","email":"zebo.nasriddinova@example.com"},
+            {"ism":"Otabek","familiya":"Rahmatov","email":"otabek.rahmatov@example.com"},
+            {"ism":"Nilufar","familiya":"Yunusova","email":"nilufar.yunusova@example.com"},
+            {"ism":"Azim","familiya":"Qodirov","email":"azim.qodirov@example.com"},
+            {"ism":"Gulbahor","familiya":"Jalilova","email":"gulbahor.jalilova@example.com"},
+            {"ism":"Shoxrux","familiya":"Toshboyev","email":"shoxrux.toshboyev@example.com"},
+            {"ism":"Madina","familiya":"Shomurodova","email":"madina.shomurodova@example.com"},
+            {"ism":"Baxodir","familiya":"Yo‘ldoshev","email":"baxodir.yoldoshev@example.com"},
+            {"ism":"Nigora","familiya":"Abdullayeva","email":"nigora.abdullayeva@example.com"},
+            {"ism":"Komil","familiya":"Toshmatov","email":"komil.toshmatov@example.com"},
+            {"ism":"Dilshod","familiya":"Rahimov","email":"dilshod.rahimov@example.com"},
+            {"ism":"Gulnoza","familiya":"Xolmurodova","email":"gulnoza.xolmurodova@example.com"},
+            {"ism":"Javohir","familiya":"Karimov","email":"javohir.karimov@example.com"},
+            {"ism":"Sevara","familiya":"Azimova","email":"sevara.azimova@example.com"},
+            {"ism":"Ulug‘bek","familiya":"Yo‘ldoshev","email":"ulugbek.yoldoshev@example.com"},
+            {"ism":"Nilufar","familiya":"Sodiqova","email":"nilufar.sodiqova@example.com"},
+            {"ism":"Shaxlo","familiya":"Raximova","email":"shaxlo.raximova@example.com"},
+            {"ism":"Bobur","familiya":"To‘xtayev","email":"bobur.toxtayev@example.com"},
+            {"ism":"Gulchehra","familiya":"Shamsiddinova","email":"gulchehra.shamsiddinova@example.com"},
+            {"ism":"Oybek","familiya":"Qodirov","email":"oybek.qodirov@example.com"},
+            {"ism":"Nigina","familiya":"Samatova","email":"nigina.samatova@example.com"},
+            {"ism":"Shahzoda","familiya":"Abdullaeva","email":"shahzoda.abdullaeva@example.com"},
+            {"ism":"Azamat","familiya":"Toshmatov","email":"azamat.toshmatov@example.com"},
+            {"ism":"Malik","familiya":"Rahimov","email":"malik.rahimov@example.com"},
+            {"ism":"Gulruh","familiya":"Saidova","email":"gulruh.saidova@example.com"},
+            {"ism":"Davron","familiya":"Xolmatov","email":"davron.xolmatov@example.com"},
+            {"ism":"Saodat","familiya":"Yo‘ldosheva","email":"saodat.yoldosheva@example.com"},
+            {"ism":"Olim","familiya":"Rahmonov","email":"olim.rahmonov@example.com"},
+            {"ism":"Zilola","familiya":"Toshpulatova","email":"zilola.toshpulatova@example.com"},
+            {"ism":"Sherzod","familiya":"Abdullayev","email":"sherzod.abdullayev@example.com"},
+            {"ism":"Gulnisa","familiya":"Shokirova","email":"gulnisa.shokirova@example.com"},
+            {"ism":"Ibrohim","familiya":"Yo‘ldoshev","email":"ibrohim.yoldoshev@example.com"},
+            {"ism":"Shahnoza","familiya":"Qodirova","email":"shahnoza.qodirova@example.com"},
+            {"ism":"Farruh","familiya":"Karimov","email":"farruh.karimov@example.com"},
+            {"ism":"Nigora","familiya":"Abdullayeva","email":"nigora.abdullayeva2@example.com"},
+            {"ism":"Bekzod","familiya":"Toshmatov","email":"bekzod.toshmatov@example.com"},
+            {"ism":"Malika","familiya":"Rahmatova","email":"malika.rahmatova@example.com"},
+            {"ism":"Shoxrux","familiya":"Yo‘ldoshev","email":"shoxrux.yoldoshev@example.com"},
+            {"ism":"Gulnoza","familiya":"Xolmatova","email":"gulnoza.xolmatova@example.com"},
+            {"ism":"Jasur","familiya":"Abdullayev","email":"jasur.abdullayev@example.com"},
+            {"ism":"Nilufar","familiya":"Rahimova","email":"nilufar.rahimova2@example.com"},
+            {"ism":"Aziza","familiya":"Toshmatova","email":"aziza.toshmatova@example.com"},
+            {"ism":"Diyor","familiya":"Xolmatov","email":"diyor.xolmatov2@example.com"},
+            {"ism":"Madina","familiya":"Shomurodova","email":"madina.shomurodova2@example.com"},
+            {"ism":"Baxodir","familiya":"Yo‘ldoshev","email":"baxodir.yoldoshev2@example.com"},
+            {"ism":"Gulbahor","familiya":"Jalilova","email":"gulbahor.jalilova2@example.com"}
+        ];
+
+        // Jadvalga ma’lumotlarni qo‘shish
+        const tableBody = document.getElementById("myTable");
+        users.forEach(user => {
+            const row = document.createElement("tr");
+            row.innerHTML = `<td>${user.ism}</td><td>${user.familiya}</td><td>${user.email}</td>`;
+            tableBody.appendChild(row);
+        });
+
+        // Qidiruv funksiyasi
+        document.getElementById("searchInput").addEventListener("keyup", function() {
+            const value = this.value.toLowerCase();
+            const rows = tableBody.getElementsByTagName("tr");
+            Array.from(rows).forEach(row => {
+                const text = row.textContent.toLowerCase();
+                row.style.display = text.indexOf(value) > -1 ? "" : "none";
+            });
+        });
+    </script>
+</body>
+</html>
